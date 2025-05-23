@@ -1,0 +1,7 @@
+Django>=3.2,<5.0
+djangorestframework
+psycopg2-binary
+python-decouple
+Faker
+drf-yasg
+django-cors-headers
