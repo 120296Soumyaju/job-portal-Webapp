@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧑‍💼 Job Portal – Next.js Frontend + Django Backend 
 
-## Getting Started
+This is a simple job portal frontend built with **Next.js** and **Tailwind CSS**. It allows users to:
 
-First, run the development server:
+- View all available job posts
+- See how many applicants applied
+- Apply to a job via a form (connected to a Django REST API backend)
 
+---
+
+## 📦 Features
+
+- Built with **Next.js App Router**
+- Styled using **Tailwind CSS**
+- API-integrated with Django backend (job listings & applications)
+- Graceful error handling for rate-limiting
+- Clean and minimal UI
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd job-portal-frontend
+```
+### 2. Install dependencies
+```
+npm install
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3.Run the development server
+```
+npm run dev
+```
+- Then visit: http://localhost:3000
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### API Configuration
 
-## Learn More
+- The frontend fetches jobs and submits applications to:
+http://127.0.0.1:8000/api/jobs/
+http://127.0.0.1:8000/api/jobs/apply/
 
-To learn more about Next.js, take a look at the following resources:
+Make sure your Django backend is running and has CORS enabled for localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Pages Overview
+Page	                Path	        Description
+Home / Job List	        /	            Lists all job posts
+Job Details + Apply	    /jobs/[id]	    View job and submit application
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Technologies Used
 
-## Deploy on Vercel
+- Next.js 14
+- Tailwind CSS
+- React Hooks
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Submission Instructions
+This frontend was built as part of a coding round to integrate with a Django job portal API.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To test it end-to-end:
+
+- Run your Django backend
+
+- Start this Next.js app
+
+- Visit http://localhost:3000
+
+### Frontend Project Structure
+
+job-portal-frontend/
+├── public/                     # Static assets (favicons, images, etc.)
+│   ├── next.svg
+│   ├── globe.svg
+│   └── ...
+│
+├── src/
+│   └── app/                    # App Router pages
+│       ├── layout.js          # Global layout wrapper (navbar, styles)
+│       ├── page.js            # Homepage – lists all jobs
+│       └── jobs/
+│           └── [id]/          # Dynamic route: job detail + apply
+│               └── page.js
+│
+├── styles/
+│   └── globals.css            # Global Tailwind/custom CSS (optional)
+│
+├── .gitignore
+├── README.md                  # Project readme 
+├── next.config.mjs            # Next.js config
+├── postcss.config.mjs         # Tailwind/PostCSS config
+├── tailwind.config.js         # Tailwind config
+├── package.json               # NPM dependencies & scripts
+└── jsconfig.json              # Path aliasing (optional)
