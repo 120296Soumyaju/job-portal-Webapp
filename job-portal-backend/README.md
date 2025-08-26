@@ -45,6 +45,7 @@ DB_PASSWORD=your_password
 DB_HOST=localhost
 DB_PORT=5432
 ```
+connected to neondb : https://console.neon.tech/app/projects/red-surf-33286202/branches/br-old-bonus-adrnfwa5/tables
 
 ### 4. Install CORS headers :
 ```
@@ -72,13 +73,18 @@ MIDDLEWARE = [
 ```
 
 ### 7.Allow localhost frontend origin:
-In settings.py, add:
+In settings.py, add
+
 ```
+
+ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'job-portal-webapp-django-backend.onrender.com']
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://job-portal-webapp-iota.vercel.app",
 ]
 
 ```

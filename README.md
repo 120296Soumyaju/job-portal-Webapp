@@ -190,6 +190,7 @@ http://localhost:3000
 ## 🔗 API Configuration
 
 Make sure your Django backend is running at `http://127.0.0.1:8000`.
+Backend Hosted on Render : https://job-portal-webapp-django-backend.onrender.com
 
 If needed, expose your API via ngrok:
 ```bash
@@ -218,16 +219,20 @@ Update your frontend fetch URLs accordingly.
 ---
 
 ## ✅ Final Notes
+```python
+ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'job-portal-webapp-django-backend.onrender.com']
+```
 
 - Make sure CORS is enabled in your Django settings:
 ```python
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000"
+    "https://job-portal-webapp-iota.vercel.app"
 ]
 ```
 
-- This project demonstrates full-stack integration of Django REST APIs with a modern React-based frontend.
+- This project demonstrates full-stack integration of Django REST APIs with a modern React Next.js based frontend.
 
 ---
 
@@ -237,3 +242,6 @@ To test it end-to-end:
 - Run your Django backend first
 - Then start this Next.js frontend
 - Visit `http://localhost:3000` and apply to jobs
+
+Webapp Live on 
+- Visit `https://job-portal-webapp-iota.vercel.app` and apply to jobs
