@@ -5,13 +5,18 @@ import Link from "next/link";
 
 export default function Home() {
   const [jobs, setJobs] = useState([]);
+  
+  const API_BASE_URL = "https://job-portal-webapp-django-backend.onrender.com";
+
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/jobs/")
+    fetch(`${API_BASE_URL}/api/jobs/`)
       .then((res) => res.json())
       .then(setJobs)
       .catch(() => console.error("Failed to load jobs"));
   }, []);
+
+  
 
   return (
     <main className="max-w-4xl mx-auto p-6">
