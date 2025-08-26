@@ -10,10 +10,10 @@ export default function JobDetails() {
   const [job, setJob] = useState(null);
   const [form, setForm] = useState({ name: "", email: "", resume_link: "" });
   const [message, setMessage] = useState("");
-  const API_BASE_URL = "https://job-portal-webapp-django-backend.onrender.com";
+ // const API_BASE_URL = "https://job-portal-webapp-django-backend.onrender.com";
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/jobs/`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/`)
       .then((res) => res.json())
       .then((data) => setJob(data.find((j) => j.id == id)))
       .catch(() => setMessage("Failed to load job details"));
@@ -22,7 +22,7 @@ export default function JobDetails() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("Submitting...");
-    const res = await fetch(`${API_BASE_URL}/api/jobs/apply/`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/apply/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...form, applied_job: parseInt(id) }),
