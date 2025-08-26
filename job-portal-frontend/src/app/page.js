@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,10 +9,15 @@ export default function Home() {
   
   //const API_BASE_URL = "https://job-portal-webapp-django-backend.onrender.com";
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-
+  console.log("API Base URL:", process.env.NEXT_PUBLIC_API_URL);
 
   useEffect(() => {
-    fetch('${API_BASE_URL}/api/jobs/')
+      if (!API_BASE_URL) {
+      console.error("NEXT_PUBLIC_API_URL is not defined");
+      return;
+    }
+
+    fetch(`${API_BASE_URL}/api/jobs/`)
       .then((res) => res.json())
       .then(setJobs)
       .catch(() => console.error("Failed to load jobs"));

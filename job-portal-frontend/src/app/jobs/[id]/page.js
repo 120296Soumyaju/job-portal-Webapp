@@ -14,16 +14,25 @@ export default function JobDetails() {
  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    fetch('${API_BASE_URL}/api/jobs/')
+      if (!API_BASE_URL) {
+      console.error("NEXT_PUBLIC_API_URL is not defined");
+      return;
+    }
+    
+    fetch(`${API_BASE_URL}/api/jobs/`)
       .then((res) => res.json())
-      .then((data) => setJob(data.find((j) => j.id == id)))
-      .catch(() => setMessage("Failed to load job details"));
+      .then((data) => {
+        const found = data.find((j) => j.id == id);
+        if (!found) setMessage("Job not found");
+        setJob(found);
+    })
+    .catch(() => setMessage("Failed to load job details"));
   }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("Submitting...");
-    const res = await fetch('${API_BASE_URL}/api/jobs/apply/', {
+    const res = await fetch(`${API_BASE_URL}/api/jobs/apply/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...form, applied_job: parseInt(id) }),
