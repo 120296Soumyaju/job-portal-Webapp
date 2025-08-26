@@ -11,7 +11,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/jobs/`)
+    fetch('${API_BASE_URL}/api/jobs/')
       .then((res) => res.json())
       .then(setJobs)
       .catch(() => console.error("Failed to load jobs"));
