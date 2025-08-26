@@ -5,6 +5,19 @@ from django.utils import timezone
 from .models import JobPost, Applicant
 from .serializers import JobPostSerializer, ApplicantSerializer
 from django.db.models import Count
+from django.http import JsonResponse
+
+def home(_request):
+    return JsonResponse({
+        "message": "🎯 Job Portal API is running!",
+        "endpoints": {
+            "Admin Dashboard": "/admin/",
+            "Swagger Docs": "/swagger/",
+            "List Jobs": "/api/jobs/",
+            "Create Job": "/api/jobs/create/",
+            "Apply Job": "/api/jobs/apply/",
+        }
+    })
 
 class JobPostCreateView(generics.CreateAPIView):
     queryset = JobPost.objects.all()
