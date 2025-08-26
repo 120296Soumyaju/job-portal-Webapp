@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['job-portal-webapp-django-backend.onrender.com']
+ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'job-portal-webapp-django-backend.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
