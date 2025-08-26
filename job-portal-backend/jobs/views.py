@@ -19,6 +19,12 @@ def home(_request):
         }
     })
 
+from django.http import JsonResponse
+
+def health_check(request):
+    return JsonResponse({"status": "ok", "message": "Job Portal Backend is healthy"})
+
+
 class JobPostCreateView(generics.CreateAPIView):
     queryset = JobPost.objects.all()
     serializer_class = JobPostSerializer
